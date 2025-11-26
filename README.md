@@ -11,14 +11,15 @@
 O sistema tem como objetivo gerenciar o fluxo de empréstimo de materiais na COAPAC do IFRN/MC (Instituto Federal do Rio Grande do Norte Campus Macau). O sistema contará com um terminal de autoatendimento e um dashboard administrativo, integrando-se ao SUAP para autenticação unificada e notificações.
 
 ### 1.1 Diagrama de Arquitetura
-<img width="1142" height="891" alt="image" src="https://github.com/user-attachments/assets/e006cf6f-36c4-4e3d-b37f-1753bede7b2e" />
+
+![Diagrama de Arquitetura](https://github.com/user-attachments/assets/e006cf6f-36c4-4e3d-b37f-1753bede7b2e)
 
 ---
 
 ## 1.2 Componentes do Sistema
 
-| Componente          | Descrição                                                               | Sugestão Tecnológica                              |
-|--------------------|--------------------------------------------------------------------------|---------------------------------------------------|
+| Componente            | Descrição                                                               | Sugestão Tecnológica                              |
+|-----------------------|-------------------------------------------------------------------------|---------------------------------------------------|
 | **Terminal (Tablet)** | Interface simplificada para solicitação de materiais.                   | React (Web App), Flutter ou Django (HTML).        |
 | **Dashboard Admin**   | Gestão de estoque, aprovação de pedidos e relatórios.                   | React, Vue.js ou Django Admin.                    |
 | **Backend (API)**     | Regras de negócio e integração com SUAP.                                | Python (Django Monólito).                         |
@@ -56,10 +57,10 @@ O sistema tem como objetivo gerenciar o fluxo de empréstimo de materiais na COA
 - **RNF03 – Desempenho:** API < 2s.  
 - **RNF04 – Segurança:** HTTPS + tokens protegidos.  
 - **RNF05 – Integridade:** Bloqueio de empréstimos sem estoque.  
-- **RNF06 – Resiliência:** Cache quando SUAP estiver fora.  
-- **RNF07 – Escalabilidade:** Multi setores.  
+- **RNF06 – Resiliência:** Preenchimento do formulário com SUAP fora.  
+- **RNF07 – Escalabilidade:** 7,5 mil de registros por ano.  
 - **RNF08 – Compatibilidade:** Navegadores modernos.  
-- **RNF09 – Auditoria:** Logs vinculados ao SUAP.  
+- **RNF09 – Auditoria:** Registro dos responsáveis pela autorização.  
 - **RNF10 – Privacidade:** Adequação à LGPD.  
 
 ---
@@ -73,7 +74,7 @@ O sistema tem como objetivo gerenciar o fluxo de empréstimo de materiais na COA
 - **RN05:** Itens valiosos exigem validação extra.  
 - **RN06:** Usuários com pendências não podem solicitar.  
 - **RN07:** Não pode renovar sem devolver.  
-- **RN08:** Retirada exige presença física.  
+- **RN08:** Retirada exige presença física (exceto professores).  
 - **RN09:** Campos preenchidos automaticamente via SUAP.  
 - **RN10:** Usuários irregulares podem ser bloqueados.  
 
@@ -81,22 +82,22 @@ O sistema tem como objetivo gerenciar o fluxo de empréstimo de materiais na COA
 
 ## Modelagem de Dados (ERD)
 
-<img width="582" height="537" alt="image" src="https://github.com/user-attachments/assets/94fd4e5a-92dc-4704-a57e-6395d9cfc50a" />
+![Modelagem de Dados](https://github.com/user-attachments/assets/94fd4e5a-92dc-4704-a57e-6395d9cfc50a)
 
 ---
 
 ## Definição da API (Principais Endpoints)
 
-| Método | Rota                         | Descrição                     |
-|--------|-------------------------------|-------------------------------|
-| **GET**  | /auth/suap/login              | Inicia fluxo OAuth2           |
-| **POST** | /auth/suap/callback           | Recebe token do SUAP          |
-| **GET**  | /materiais                    | Lista materiais               |
-| **POST** | /materiais                    | Cadastra novo material        |
-| **POST** | /emprestimos/solicitar        | Cria nova solicitação         |
+| Método   | Rota                          | Descrição                        |
+|----------|-------------------------------|----------------------------------|
+| **GET**  | /auth/suap/login              | Inicia fluxo OAuth2              |
+| **POST** | /auth/suap/callback           | Recebe token do SUAP             |
+| **GET**  | /materiais                    | Lista materiais                  |
+| **POST** | /materiais                    | Cadastra novo material           |
+| **POST** | /emprestimos/solicitar        | Cria nova solicitação            |
 | **GET**  | /emprestimos                  | Listar empréstimos (com filtros) |
-| **PATCH**| /emprestimos/{id}/status      | Atualiza status               |
-| **POST** | /emprestimos/{id}/devolver    | Processa devolução            |
+| **PATCH**| /emprestimos/{id}/status      | Atualiza status                  |
+| **POST** | /emprestimos/{id}/devolver    | Processa devolução               |
 
 ---
 
