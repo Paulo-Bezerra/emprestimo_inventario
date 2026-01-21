@@ -1,7 +1,7 @@
 # Documento de Especificação de Requisitos de Software
 
 ## Sistema de Gerenciamento de Empréstimos da COAPAC/MC/IFRN
-**Versão:** 1.0  
+**Versão:** 0.0.000 
 **Status:** Rascunho Inicial  
 **Data:** 25/11/2025
 
