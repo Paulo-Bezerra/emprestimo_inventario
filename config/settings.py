@@ -80,7 +80,7 @@ DATA_DIR.mkdir(exist_ok=True)  # cria a pasta se não existir
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DATA_DIR / 'db.sqlite3',
     }
 }
 
