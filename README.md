@@ -1,9 +1,7 @@
 # Empréstimo de Inventário
 
-<div style="text-align: center;">
-  <img src="https://img.shields.io/badge/Versão-0.1.0-blue" />
-  <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-yellow" />
-</div>
+![version](https://img.shields.io/badge/Versão-0.1.0-blue)
+![status](https://img.shields.io/badge/Status-Em%20desenvolvimento-yellow)
 
 O sistema tem como objetivo gerenciar o fluxo de empréstimo de materiais na COAPAC do IFRN/MC (Instituto Federal do Rio Grande do Norte Campus Macau). O sistema contará com um terminal de autoatendimento e um dashboard administrativo, integrando-se ao SUAP para autenticação unificada e notificações.
 
