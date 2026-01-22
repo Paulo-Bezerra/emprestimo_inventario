@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(DJANGO_SECRET_KEY) 
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG") == "True"
@@ -73,10 +73,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Pasta data dentro do projeto
+DATA_DIR = BASE_DIR / "data"
+DATA_DIR.mkdir(exist_ok=True)  # cria a pasta se não existir
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'data/db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

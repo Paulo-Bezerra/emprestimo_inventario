@@ -19,3 +19,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copia o código da aplicação
 COPY . .
+
+# Cria a pasta 'data' caso não exista (necessário para SQLite)
+RUN mkdir -p /app/data
