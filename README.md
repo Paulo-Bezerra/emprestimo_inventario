@@ -48,5 +48,5 @@ docker compose up --build
 
 Após subir o container, acesse:
 
-[http://localhost:8000](http://localhost:8000)
+[http://localhost:8080](http://localhost:8080)
 
