@@ -13,23 +13,23 @@ class Usuario(models.Model):
         ('GESTOR', 'Gestor'),
         ('ADMINISTRADOR', 'Administrador')
     ]
-    matricula = models.CharField(max_length=14, unique=True)
-    nome = models.CharField(max_length=75)
-    tipo = models.CharField(max_length=8, choices=TIPO_CHOICES)
-    perfil = models.CharField(max_length=13, choices=PERFIL_CHOICES)
+    matricula = models.CharField(max_length=14, unique=True, blank=False, null=False)
+    nome = models.CharField(max_length=75, blank=False, null=False)
+    tipo = models.CharField(max_length=8, blank=False, null=False, choices=TIPO_CHOICES)
+    perfil = models.CharField(max_length=13, blank=False, null=False,choices=PERFIL_CHOICES)
 
     def __str__(self):
         return f"{self.nome} ({self.matricula})"
 
 
 class Material(models.Model):
-    nome = models.CharField(max_length=100)
-    patrimonio = models.CharField(max_length=10, unique=True, null=True)
-    quantidade_total = models.PositiveIntegerField()
-    descricao = models.TextField(blank=True)
+    nome = models.CharField(max_length=100, blank=False, null=False,)
+    patrimonio = models.CharField(max_length=10, blank=True, null=False, default='')
+    quantidade_total = models.PositiveIntegerField(default=0, blank=False, null=False)
+    descricao = models.TextField(blank=True, null=False, default='')
 
     def __str__(self):
-        return self.nome
+        return f"Cod. {self.pk} | {self.nome} ({self.descricao})"
 
     @property
     def quantidade_disponivel(self):
@@ -50,7 +50,7 @@ class Emprestimo(models.Model):
     )
     data_saida = models.DateTimeField(auto_now_add=True)
     data_devolucao = models.DateTimeField(null=True, blank=True)
-    observacao = models.TextField(null=True, blank=True, default='')
+    observacao = models.TextField(null=False, blank=True, default='')
 
     def __str__(self):
         return f"{self.material.nome} - {self.usuario.nome}"

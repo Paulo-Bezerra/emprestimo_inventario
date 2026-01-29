@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de materiais</title>
+</head>
+<body>
+  <a href="{% url 'material_create' %}">Cadastrar novo material</a>
+  <h1>Lista de materiais</h1>
+  <ul>
+    {% for material in materiais %}
+    <li>
+      <strong>{{ material.nome }}</strong>
+      (Quantidade disponível: {{ material.quantidade_disponivel }})
+
+      | <a href="{% url 'material_detail' material.pk %}">Ver</a>
+      | <a href="{% url 'material_update' material.pk %}">Editar</a>
+      | <a href="{% url 'material_delete' material.pk %}">Excluir</a>
+    </li>
+    {% empty %}
+    <li>Nenhum material cadastrado.</li>
+    {% endfor %}
+  </ul>
+
+</body>
+</html>

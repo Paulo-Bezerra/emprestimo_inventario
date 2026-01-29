@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{materal.nome}}</title>
+</head>
+<body>
+  <a href="{% url 'material_list' %}">Lista de materiais</a>
+  <h1>{{materal.nome}}</h1>
+  <p><strong>Patrimônio:</strong> {{ material.patrimonio }}</p>
+  <p><strong>Quantidade total:</strong> {{ material.quantidade_total }}</p>
+  <p><strong>Quantidade disponível:</strong> {{ material.quantidade_disponivel}}</p>
+  <p><strong>Descrição:</strong></p>
+  <p>{{ material.descricao|default:"Sem descrição."}}</p>
+  <p>
+    <a href="{% url 'material_update' material.pk %}">Editar</a>
+    | <a href="{% url 'material_delete' material.pk %}">Excluir</a>
+  </p>
+</body>
+</html>

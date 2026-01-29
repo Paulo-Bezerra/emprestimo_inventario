@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% if form.instance.pk %}
+      Editar Material
+    {% else %}
+      Novo Material
+    {% endif %}
+  </title>
+</head>
+<body>
+  <a href="{% url 'material_list' %}">Lista de materiais</a>
+  <h1>
+    {% if form.instance.pk %}
+      Editar Material
+    {% else %}
+      Novo Material
+    {% endif %}
+  </h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    {% if form.instance.pk %}
+      <a href="{% url 'material_detail' form.instance.pk %}">Cancelar</a>
+    {% else %}
+      <a href="{% url 'material_list' %}">Cancelar</a>
+    {% endif %}
+
+  </form>
+</body>
+</html>

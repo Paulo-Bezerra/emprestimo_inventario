@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excluir material</title>
+</head>
+<body>
+  <a href="{% url 'material_list' %}">Lista de materiais</a>
+  <h1>Excluir Material</h1>
+
+  <p>
+    Tem certeza que deseja excluir
+    <strong>{{ material.nome }}</strong>?
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+  </form>
+  <a href="{% url 'material_detail' material.pk %}">Cancelar</a>
+</body>
+</html>
