@@ -45,6 +45,12 @@ cd emprestimo_inventario
 cp .env.example .env
 docker compose up --build
 ```
+Dentro do container docker:
+
+```bash
+python ./manage.py makemigrations
+python ./manage.py migrate
+```
 
 Após subir o container, acesse:
 
